@@ -1,0 +1,47 @@
+<div class="row" style="margin: 33px;">
+  <div class="col s6 offset-s2"><span class="flow-text"><%= @post.title %></span></div>
+</div>
+
+<div class="row">
+  <div class="col m2"></div>
+  <div class="col m6" id="comments_list" data-post-id='<%= @post.id %>'>
+    <% @post.comments.each do |comment| %>
+      <div class="card-panel hoverable">
+        <%= comment.body %>
+      </div> 
+    <% end %>
+  </div>
+  
+  <div class="col m4">
+    <div class="row">
+       <%= form_for @comment, url: '#' do |form| %>
+      <div class="col s12 m10" style="margin-left: 47px;">
+        <div class="card light-blue lighten-5">
+          <div class="card-content white-text">
+            <div class="field">
+              <h5 style="color: black">Comment</h5>
+              <%= form.text_area :body, style: 'height: 12rem;', class: 'comment_body' %>
+            </div>
+          </div>
+          <div class="card-action">
+            <div class="col m10"></div>
+            <button class="btn waves-effect waves-light"  id="submit_comment" type="submit" name="action">Submit</button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+   
+  </div>
+  
+</div>
+
+<style type="text/css">
+	input,
+textarea {
+	display: block;
+	width: 100%;
+	border: 0;
+	padding: 10px 5px;
+  background: white no-repeat;
+</style>
